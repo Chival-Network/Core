@@ -9,4 +9,13 @@ commands:
   fly:
     usage: /fly
     description: A command used to toggle flight
-    permissiom: chival.fly
+    permission: chival.fly
+  speed:
+    usage: /speed <speed>
+    description: A command used to change speed
+    permission: chival.speed
+permissions:
+  chival.fly:
+   default: false
+  chival.speed:
+    default: false

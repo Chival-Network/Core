@@ -1,4 +1,4 @@
-package au.chival.core.command;
+package au.chival.core;
 
 import au.chival.core.Core;
 import au.chival.core.util.Theme;

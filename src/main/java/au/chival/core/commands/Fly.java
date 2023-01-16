@@ -1,42 +1,56 @@
 package au.chival.core.commands;
 
+import au.chival.core.CommandBase;
+import au.chival.core.util.Theme;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static au.chival.core.util.Theme.*;
+import static org.bukkit.Bukkit.getPlayer;
 
-public class Fly implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (!(sender instanceof Player) || args.length < 1) {
-            sender.sendMessage(ERROR + "The console can't fly");
-        }
+public class Fly extends CommandBase {
+	public Fly() {
+		super("fly", true, "chival.fly");
+	}
 
-        Player player = (Player) sender;
 
-        if (args.length < 0) {
+	@Override
+	public void execute(CommandSender sender, Command command, String[] args) {
+		Player target;
+		boolean self = true;
 
-            if (player.getAllowFlight() == false) {
+		if (args.length == 1) {
+			target = getPlayer(args[0]);
+			if (target != null && !target.getName().equals(sender.getName())) self = false;
+		} else if (sender instanceof Player) {
+			target = (Player) sender;
+		} else {
+			sender.sendMessage("Invalid arguments for console, please specify a player");
+			return;
+		}
 
-                player.setAllowFlight(true);
-                player.sendMessage(SUCCESS + "Flight enabled");
-            } else {
+		if (!self && !sender.hasPermission("chival.fly.others")) {
+			this.sendNoPermission(sender);
+			return;
+		}
 
-                player.setAllowFlight(false);
-                player.sendMessage(SUCCESS + "Flight " + ERROR + "disabled");
+		if (target == null) {
+			Theme.sendMessage(sender, "%error%Player not found");
+			return;
+		}
 
-            }
+		if (target.getGameMode() == GameMode.CREATIVE) {
+			Theme.sendMessage(sender, "%error%Player is in creative mode");
+			return;
+		}
 
-            return true;
-        }
+		boolean fly = !target.getAllowFlight();
+		target.setAllowFlight(fly);
+		target.setFlying(fly);
 
-        if (args.length != 1) {
-            player.sendMessage(ERROR + "Invalid args (Must be a player)");
-        }
-
-        return true;
-    }
+		Theme.sendMessage(target, fly ? "%success%Flight enabled" : "%error%Flight disabled");
+		if (!self) Theme.sendMessage(sender, fly ? "%success%Flight enabled for " + target.getDisplayName() : "%error%Flight disabled for " + target.getDisplayName());
+	}
 }

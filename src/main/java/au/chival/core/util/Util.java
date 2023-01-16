@@ -1,9 +1,9 @@
 package au.chival.core.util;
 
-import org.bukkit.ChatColor;
+import static au.chival.core.Core.PLUGIN;
 
 public class Util {
 
-    public static final String DISCORD = "https://discord.gg/kuz6EJpuZ9";
+    public static final String DISCORD = PLUGIN.getConfig().getString("discord-invite");
 
 }

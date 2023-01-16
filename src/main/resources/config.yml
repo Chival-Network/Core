@@ -1,4 +1,3 @@
-discord-invite: https://discord.gg/kuz6EJpuZ9
-
+discord-invite: "https://discord.gg/kuz6EJpuZ9"
 messages:
   no-permission: "%error%&l(!) &r%error%You do not have permission to use this command."

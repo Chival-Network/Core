@@ -1,7 +1,8 @@
 package au.chival.core;
 
-import au.chival.core.command.Fly;
-import au.chival.core.command.Help;
+import au.chival.core.commands.Fly;
+import au.chival.core.commands.Help;
+import au.chival.core.commands.Speed;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Core extends JavaPlugin {
@@ -16,6 +17,7 @@ public final class Core extends JavaPlugin {
         //cmd-reg
         new Help();
         new Fly();
+        new Speed();
         //
 
         //listener-reg
