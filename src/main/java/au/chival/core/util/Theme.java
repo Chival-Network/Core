@@ -1,6 +1,7 @@
 package au.chival.core.util;
 
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 
 
 public class Theme {
@@ -19,5 +20,9 @@ public class Theme {
 		message = message.replace("%warning%", WARNING);
 
 		return ChatColor.translateAlternateColorCodes('&', message);
+	}
+
+	public static void sendMessage(CommandSender p, String msg) {
+		p.sendMessage(color(msg));
 	}
 }
