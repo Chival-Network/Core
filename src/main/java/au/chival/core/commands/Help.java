@@ -1,4 +1,4 @@
-package au.chival.core;
+package au.chival.core.commands;
 
 import net.luckperms.api.LuckPermsProvider;
 import net.minecraft.server.v1_8_R3.MinecraftServer;
@@ -9,13 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.util.StringUtil;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Help implements CommandExecutor, TabExecutor {
 
-    public void helpMessage(Player player, String[] args) {
+    public void helpMessage(Player player, String args) {
 
         player.sendMessage(" ");
         player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Welcome to Chival-Network®");
@@ -24,18 +24,17 @@ public class Help implements CommandExecutor, TabExecutor {
         player.sendMessage(ChatColor.DARK_AQUA + "Ask a staff member for more info");
         player.sendMessage(" ");
 
-        if (args.length < 1) {
-            return;
-        }
+        if (args.contains("info")) {
 
-        if (args[0] == "info") {
             player.sendMessage(ChatColor.DARK_AQUA + "Info:");
             player.sendMessage(" Loc: " + ChatColor.DARK_GREEN + player.getLocation());
             player.sendMessage(" Rank: " + ChatColor.DARK_GREEN + LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId()).getPrimaryGroup());
             player.sendMessage(" Display-name: " + ChatColor.DARK_GREEN + player.getDisplayName());
             player.sendMessage(" Ping: " + ChatColor.DARK_GREEN + ((CraftPlayer)player).getHandle().ping);
-            player.sendMessage(" TPS: " + ChatColor.DARK_GREEN + MinecraftServer.getServer().recentTps);
+            player.sendMessage(" TPS: " + ChatColor.DARK_GREEN + Arrays.toString(MinecraftServer.getServer().recentTps));
+            player.sendMessage(" Server: " + ChatColor.DARK_GREEN + MinecraftServer.getServer().server);
             player.sendMessage(" ");
+
         }
 
     }
@@ -47,7 +46,12 @@ public class Help implements CommandExecutor, TabExecutor {
             return false;
         }
 
-        helpMessage((Player) sender, args);
+        if (args.length == 0) {
+            helpMessage((Player) sender, "default");
+            return true;
+        }
+
+        helpMessage((Player) sender, args[0]);
 
         return true;
     }
@@ -56,10 +60,11 @@ public class Help implements CommandExecutor, TabExecutor {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         LinkedList<String> tab = new LinkedList();
 
-        if (args.length == 0) {
+        if (args.length == 1) {
             tab.add("info");
+            return StringUtil.copyPartialMatches(args[0], tab, new ArrayList<>());
         }
 
-        return tab;
+        return Collections.EMPTY_LIST;
     }
 }

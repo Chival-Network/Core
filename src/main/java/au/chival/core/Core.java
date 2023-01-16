@@ -1,5 +1,6 @@
 package au.chival.core;
 
+import au.chival.core.commands.Help;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Core extends JavaPlugin {
