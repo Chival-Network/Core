@@ -34,7 +34,7 @@ public class Fly implements CommandExecutor {
         }
 
         if (args.length != 1) {
-
+            player.sendMessage(ERROR + "Invalid args (Must be a player)");
         }
 
         return true;
