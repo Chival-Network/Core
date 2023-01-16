@@ -13,6 +13,8 @@ import org.bukkit.util.StringUtil;
 
 import java.util.*;
 
+import static au.chival.core.util.Util.*;
+
 public class Help implements CommandExecutor, TabExecutor {
 
     public void helpMessage(Player player, String args) {
@@ -20,7 +22,7 @@ public class Help implements CommandExecutor, TabExecutor {
         player.sendMessage(" ");
         player.sendMessage(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Welcome to Chival-Network®");
         player.sendMessage(ChatColor.DARK_AQUA + "Use the compass in lobby to select a server");
-        player.sendMessage(ChatColor.DARK_AQUA + "Discord: " + ChatColor.DARK_GREEN + "https://discord.gg/kuz6EJpuZ9");
+        player.sendMessage(ChatColor.DARK_AQUA + "Discord: " + ChatColor.DARK_GREEN + DISCORD);
         player.sendMessage(ChatColor.DARK_AQUA + "Ask a staff member for more info");
         player.sendMessage(" ");
 
