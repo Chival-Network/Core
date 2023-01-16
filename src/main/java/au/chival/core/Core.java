@@ -16,11 +16,9 @@ public final class Core extends JavaPlugin {
 
         //listener-reg
 
-
     }
 
     @Override
     public void onDisable() {
-        //
     }
 }
