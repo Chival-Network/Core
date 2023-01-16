@@ -29,7 +29,7 @@ public class Speed extends CommandBase {
         }
 
         if (target != sender && !sender.hasPermission("chival.speed.others")) {
-            this.sendNoPermission(sender);
+            sender.sendMessage(tl("no-permission"));
             return;
         }
 
@@ -43,7 +43,6 @@ public class Speed extends CommandBase {
 
         try {
             float speed = Float.parseFloat(args[0]);
-
             if (speed > 10 || speed < 1) {
                 sender.sendMessage(tl("speed.invalid"));
                 return;
@@ -64,7 +63,7 @@ public class Speed extends CommandBase {
     }
 
     public List<String> tabComplete(CommandSender sender, Command command, String[] args) {
-        ArrayList<String> tab = new ArrayList<>();
+        LinkedList<String> tab = new LinkedList<>();
 
         if (args.length == 1) {
             tab.add("reset");

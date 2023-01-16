@@ -8,10 +8,10 @@ import java.util.logging.Logger;
 
 public class I18n {
 	private static final ResourceBundle BUNDLE = ResourceBundle.getBundle("messages");
-	private static final String INFO = ChatColor.translateAlternateColorCodes('&', get("info"));
-	private static final String ERROR = ChatColor.translateAlternateColorCodes('&', get("error"));
-	private static final String SUCCESS = ChatColor.translateAlternateColorCodes('&', get("success"));
-	private static final String WARNING = ChatColor.translateAlternateColorCodes('&', get("warning"));
+	public static final String INFO = ChatColor.translateAlternateColorCodes('&', get("info"));
+	public static final String ERROR = ChatColor.translateAlternateColorCodes('&', get("error"));
+	public static final String SUCCESS = ChatColor.translateAlternateColorCodes('&', get("success"));
+	public static final String WARNING = ChatColor.translateAlternateColorCodes('&', get("warning"));
 
 
 	public static String get(String key) {

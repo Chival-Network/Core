@@ -27,7 +27,7 @@ public class Help extends CommandBase {
         player.sendMessage(" ");
         player.sendMessage("&b&lWelcome to Chival-Network®");
         player.sendMessage("%info%Use the compass in lobby to select a server");
-        player.sendMessage("%info%Discord: %success%" + ChatColor.DARK_GREEN + Core.PLUGIN.getConfig().getString("discord-invite"));
+        player.sendMessage("%info%Discord: " + ChatColor.DARK_GREEN + Core.PLUGIN.getConfig().getString("discord-invite"));
         player.sendMessage("%info%Ask a staff member for more info");
         player.sendMessage(" ");
 

@@ -30,7 +30,7 @@ public class Fly extends CommandBase {
 		}
 
 		if (!self && !sender.hasPermission("chival.fly.others")) {
-			this.sendNoPermission(sender);
+			sender.sendMessage(tl("no-permission"));
 			return;
 		}
 

@@ -30,7 +30,7 @@ public abstract class CommandBase {
 			}
 
 			if (permission != null && !sender.hasPermission(permission)) {
-				this.sendNoPermission(sender);
+				sender.sendMessage(tl("no-permission"));
 				return true;
 			}
 
@@ -50,10 +50,6 @@ public abstract class CommandBase {
 
 	public List<String> tabComplete(CommandSender sender, Command command, String[] args) {
 		return null;
-	}
-
-	protected void sendNoPermission(CommandSender sender) {
-		sender.sendMessage(tl("no-permission"));
 	}
 
 	protected String tl(String key, Object... args) {
