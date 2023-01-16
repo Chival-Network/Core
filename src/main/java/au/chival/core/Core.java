@@ -14,6 +14,10 @@ public final class Core extends JavaPlugin {
         plugin = this;
 
         //cmd-reg
+            //help
+            getCommand("help").setExecutor(new Help());
+            getCommand("help").setTabCompleter(new Help());
+        //
 
         //listener-reg
 
