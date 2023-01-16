@@ -1,11 +1,13 @@
 package au.chival.core;
 
-import jdk.javadoc.internal.doclets.toolkit.taglets.snippet.Style;
+import net.luckperms.api.LuckPermsProvider;
+import net.minecraft.server.v1_8_R3.MinecraftServer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.LinkedList;
@@ -25,10 +27,10 @@ public class Help implements CommandExecutor, TabExecutor {
         if (args[0] == "info") {
             player.sendMessage(ChatColor.DARK_AQUA + "Info:");
             player.sendMessage(" Loc: " + ChatColor.DARK_GREEN + player.getLocation());
-            player.sendMessage(" Rank: " + ChatColor.DARK_GREEN + );
-            player.sendMessage(" Display-name: " + ChatColor.DARK_GREEN + "");
-            player.sendMessage(" Ping: " + ChatColor.DARK_GREEN + "");
-            player.sendMessage(" TPS: " + ChatColor.DARK_GREEN + "");
+            player.sendMessage(" Rank: " + ChatColor.DARK_GREEN + LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId()).getPrimaryGroup());
+            player.sendMessage(" Display-name: " + ChatColor.DARK_GREEN + player.getDisplayName());
+            player.sendMessage(" Ping: " + ChatColor.DARK_GREEN + ((CraftPlayer)player).getHandle().ping);
+            player.sendMessage(" TPS: " + ChatColor.DARK_GREEN + MinecraftServer.getServer().recentTps);
             player.sendMessage(" ");
         }
 
