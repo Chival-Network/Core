@@ -14,8 +14,3 @@ commands:
     usage: /speed <speed>
     description: A command used to change speed
     permission: chival.speed
-permissions:
-  chival.fly:
-   default: false
-  chival.speed:
-    default: false

@@ -2,7 +2,6 @@ package au.chival.core.commands;
 
 import au.chival.core.CommandBase;
 import au.chival.core.Core;
-import au.chival.core.util.Theme;
 import net.luckperms.api.LuckPermsProvider;
 import net.minecraft.server.v1_8_R3.MinecraftServer;
 import org.bukkit.Bukkit;
@@ -26,24 +25,24 @@ public class Help extends CommandBase {
         Player player = (Player) sender;
 
         player.sendMessage(" ");
-        Theme.sendMessage(player, "&b&lWelcome to Chival-Network®");
-        Theme.sendMessage(player, "%info%Use the compass in lobby to select a server");
-        Theme.sendMessage(player, "%info%Discord: %success%" + ChatColor.DARK_GREEN + Core.PLUGIN.getConfig().getString("discord-invite"));
-        Theme.sendMessage(player, "%info%Ask a staff member for more info");
+        player.sendMessage("&b&lWelcome to Chival-Network®");
+        player.sendMessage("%info%Use the compass in lobby to select a server");
+        player.sendMessage("%info%Discord: %success%" + ChatColor.DARK_GREEN + Core.PLUGIN.getConfig().getString("discord-invite"));
+        player.sendMessage("%info%Ask a staff member for more info");
         player.sendMessage(" ");
 
         if (args.length < 1) return;
 
         if ("info".equalsIgnoreCase(args[0])) {
-            Theme.sendMessage(player, "%info%&lInfo:");
+            player.sendMessage("%info%&lInfo:");
 
-            Theme.sendMessage(player, "%info%Loc: %success%" + player.getLocation());
-            Theme.sendMessage(player, "%info%Rank: %success%" + LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId()).getPrimaryGroup());
-            Theme.sendMessage(player, "%info%Display-name: %success%" + player.getDisplayName());
-            Theme.sendMessage(player, "%info%Ping: %success%" + ((CraftPlayer)player).getHandle().ping);
-            Theme.sendMessage(player, "%info%TPS: %success%" + Arrays.toString(MinecraftServer.getServer().recentTps));
-            Theme.sendMessage(player, "%info%Online players: %success%" + Bukkit.getOnlinePlayers().size());
-            Theme.sendMessage(player, "%info%Core Version: %success%" + Core.PLUGIN.getDescription().getVersion());
+            player.sendMessage("%info%Loc: %success%" + player.getLocation());
+            player.sendMessage("%info%Rank: %success%" + LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId()).getPrimaryGroup());
+            player.sendMessage("%info%Display-name: %success%" + player.getDisplayName());
+            player.sendMessage("%info%Ping: %success%" + ((CraftPlayer)player).getHandle().ping);
+            player.sendMessage("%info%TPS: %success%" + Arrays.toString(MinecraftServer.getServer().recentTps));
+            player.sendMessage("%info%Online players: %success%" + Bukkit.getOnlinePlayers().size());
+            player.sendMessage("%info%Core Version: %success%" + Core.PLUGIN.getDescription().getVersion());
             player.sendMessage(" ");
         }
     }

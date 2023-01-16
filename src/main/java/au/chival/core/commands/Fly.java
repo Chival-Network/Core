@@ -1,10 +1,9 @@
 package au.chival.core.commands;
 
 import au.chival.core.CommandBase;
-import au.chival.core.util.Theme;
-import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import static org.bukkit.Bukkit.getPlayer;
@@ -36,20 +35,20 @@ public class Fly extends CommandBase {
 		}
 
 		if (target == null) {
-			Theme.sendMessage(sender, "%error%Player not found");
-			return;
-		}
-
-		if (target.getGameMode() == GameMode.CREATIVE) {
-			Theme.sendMessage(sender, "%error%Player is in creative mode");
+			sender.sendMessage(tl("fly.player-not-found"));
 			return;
 		}
 
 		boolean fly = !target.getAllowFlight();
+		String key = fly ? "fly.enabled" : "fly.disabled";
+
 		target.setAllowFlight(fly);
+
+		// if they are on the ground, bump them up a bit and make them fly
+		if (fly && ((Entity) target).isOnGround()) target.setVelocity(target.getVelocity().setY(0.5));
 		target.setFlying(fly);
 
-		Theme.sendMessage(target, fly ? "%success%Flight enabled" : "%error%Flight disabled");
-		if (!self) Theme.sendMessage(sender, fly ? "%success%Flight enabled for " + target.getDisplayName() : "%error%Flight disabled for " + target.getDisplayName());
+		target.sendMessage(tl(key));
+		if (!self) sender.sendMessage(tl(key + ".other", target.getName()));
 	}
 }

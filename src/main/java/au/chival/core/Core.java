@@ -5,6 +5,9 @@ import au.chival.core.commands.Help;
 import au.chival.core.commands.Speed;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Logger;
+
+
 public final class Core extends JavaPlugin {
     public static JavaPlugin PLUGIN;
 
@@ -22,6 +25,7 @@ public final class Core extends JavaPlugin {
 
         //listener-reg
 
+        Logger.getLogger("Chival").info("ChivalCore v" + this.getDescription().getVersion() + " successfully loaded");
     }
 
     @Override

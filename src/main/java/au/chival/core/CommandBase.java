@@ -1,7 +1,6 @@
 package au.chival.core;
 
-import au.chival.core.Core;
-import au.chival.core.util.Theme;
+import au.chival.core.util.I18n;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -54,7 +53,11 @@ public abstract class CommandBase {
 	}
 
 	protected void sendNoPermission(CommandSender sender) {
-		Theme.sendMessage(sender, Core.PLUGIN.getConfig().getString("messages.no-permission", Theme.ERROR + "You do not have permission to use this command"));
+		sender.sendMessage(tl("no-permission"));
+	}
+
+	protected String tl(String key, Object... args) {
+		return I18n.format(key, args);
 	}
 
 	public String getName() {

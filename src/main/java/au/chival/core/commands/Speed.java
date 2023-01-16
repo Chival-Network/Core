@@ -8,8 +8,6 @@ import org.bukkit.util.StringUtil;
 
 import java.util.*;
 
-import static au.chival.core.util.Theme.ERROR;
-import static au.chival.core.util.Theme.SUCCESS;
 
 public class Speed extends CommandBase {
 
@@ -24,7 +22,7 @@ public class Speed extends CommandBase {
 
             if (args[0].contains("reset") && args[0].length() == 5) {
 
-                player.sendMessage(SUCCESS + "Reset speed");
+                player.sendMessage("Reset speed");
 
                 player.setFlySpeed(0.1f);
                 player.setWalkSpeed(0.2f);
@@ -37,7 +35,7 @@ public class Speed extends CommandBase {
 
                 if (i > 10 || i < 1) {
 
-                    player.sendMessage(ERROR + "Number must be from 1 - 10");
+                    player.sendMessage("Number must be from 1 - 10");
                     return;
                 }
 
@@ -48,7 +46,7 @@ public class Speed extends CommandBase {
 
             } catch (Exception e) {
 
-               player.sendMessage(ERROR + "You may only put an number");
+               player.sendMessage("You may only put an number");
 
             }
         }
