@@ -13,17 +13,13 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 
 public class Help extends CommandBase {
     public Help() {
         super("help");
     }
-
 
     @Override
     public void execute(CommandSender sender, Command command, String[] args) {
@@ -61,6 +57,6 @@ public class Help extends CommandBase {
             return StringUtil.copyPartialMatches(args[0], tab, new ArrayList<>());
         }
 
-        return null;
+        return Collections.EMPTY_LIST;
     }
 }

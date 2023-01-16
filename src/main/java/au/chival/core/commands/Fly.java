@@ -15,7 +15,6 @@ public class Fly extends CommandBase {
 		super("fly", true, "chival.fly");
 	}
 
-
 	@Override
 	public void execute(CommandSender sender, Command command, String[] args) {
 		Player target;
