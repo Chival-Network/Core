@@ -1,6 +1,7 @@
 package au.chival.core.commands;
 
 import au.chival.core.CommandBase;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -10,56 +11,63 @@ import java.util.*;
 
 
 public class Speed extends CommandBase {
-
-    public Speed() {super("speed", false, "chival.speed");}
+    public Speed() {
+        super("speed", false, "chival.speed");
+    }
 
     @Override
     public void execute(CommandSender sender, Command command, String[] args) {
+        if (args.length < 1) {
+            sender.sendMessage(tl("speed.usage"));
+            return;
+        }
 
-        Player player = (Player) sender;
+        Player target = args.length == 1 ? (Player) sender : Bukkit.getPlayer(args[1]);
+        if (target == null) {
+            if (sender != null) sender.sendMessage(tl("player-not-found"));
+            return;
+        }
 
-        if (args.length == 1) {
+        if (target != sender && !sender.hasPermission("chival.speed.others")) {
+            this.sendNoPermission(sender);
+            return;
+        }
 
-            if (args[0].contains("reset") && args[0].length() == 5) {
+        if ("reset".equals(args[0])) {
+            sender.sendMessage(tl("speed.reset"));
 
-                player.sendMessage("Reset speed");
+            target.setFlySpeed(0.1F);
+            target.setWalkSpeed(0.2F);
+            return;
+        }
 
-                player.setFlySpeed(0.1f);
-                player.setWalkSpeed(0.2f);
+        try {
+            float speed = Float.parseFloat(args[0]);
+
+            if (speed > 10 || speed < 1) {
+                sender.sendMessage(tl("speed.invalid"));
                 return;
             }
 
-            try {
-
-                Float i = Float.parseFloat(args[0]);
-
-                if (i > 10 || i < 1) {
-
-                    player.sendMessage("Number must be from 1 - 10");
-                    return;
-                }
-
-                i = i / 10;
-                player.setFlySpeed(i);
-                if (i <= 0.2) {i = 0.2f;}
-                player.setWalkSpeed(i);
-
-            } catch (Exception e) {
-
-               player.sendMessage("You may only put an number");
-
+            float i = speed / 10;
+            if (target.isFlying()) target.setFlySpeed(i);
+            else {
+                if (i <= 0.2) i = 0.2F;
+                target.setWalkSpeed(i);
             }
+
+            target.sendMessage(tl("speed.set", speed));
+            if (target != sender) sender.sendMessage(tl("speed.set.other", speed, target.getName()));
+        } catch (Exception e) {
+            sender.sendMessage(tl("speed.invalid"));
         }
     }
 
     public List<String> tabComplete(CommandSender sender, Command command, String[] args) {
-
-        LinkedList tab = new LinkedList<>();
+        ArrayList<String> tab = new ArrayList<>();
 
         if (args.length == 1) {
-
             tab.add("reset");
-
             return StringUtil.copyPartialMatches(args[0], tab, new ArrayList<>());
         }
 

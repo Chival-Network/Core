@@ -35,7 +35,7 @@ public class Fly extends CommandBase {
 		}
 
 		if (target == null) {
-			sender.sendMessage(tl("fly.player-not-found"));
+			sender.sendMessage(tl("player-not-found"));
 			return;
 		}
 

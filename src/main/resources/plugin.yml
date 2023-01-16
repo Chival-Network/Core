@@ -7,10 +7,8 @@ commands:
     usage: /help <tag>
     description: A command used to get help
   fly:
-    usage: /fly
+    usage: /fly [player]
     description: A command used to toggle flight
-    permission: chival.fly
   speed:
-    usage: /speed <speed>
+    usage: /speed <speed> [player]
     description: A command used to change speed
-    permission: chival.speed
