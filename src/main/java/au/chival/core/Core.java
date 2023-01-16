@@ -9,6 +9,8 @@ public final class Core extends JavaPlugin {
     @Override
     public void onEnable() {
 
+        //1.0
+
         plugin = this;
 
         //cmd-reg
