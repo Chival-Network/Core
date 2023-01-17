@@ -5,6 +5,7 @@ import me.neznamy.tab.api.TabPlayer;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -18,9 +19,17 @@ public class Formating {
         LuckPerms luckPerms = LuckPermsProvider.get();
         User user = luckPerms.getUserManager().getUser(player.getUniqueId());
 
-        String name = user.getUsername();
+        String name = Bukkit.getPlayer(user.getUniqueId()).getName();
         String prefix = user.getCachedData().getMetaData().getPrefix();
         String suffix = user.getCachedData().getMetaData().getSuffix();
+
+        if (prefix == null) {
+            prefix = "";
+        }
+
+        if (suffix == null) {
+            suffix = "";
+        }
 
         String displayName = (prefix + name + suffix);
 
@@ -31,16 +40,33 @@ public class Formating {
 
     public static void foramtDisplayName(Player player) {
 
-        LuckPerms luckPerms = LuckPermsProvider.get();
-        User user = luckPerms.getUserManager().getUser(player.getUniqueId());
+        new BukkitRunnable() {
+            @Override
+            public void run() {
 
-        String name = user.getUsername();
-        String prefix = user.getCachedData().getMetaData().getPrefix();
-        String suffix = user.getCachedData().getMetaData().getSuffix();
+                while (player == null) return;
 
-        String displayName = (prefix + name + suffix);
+                LuckPerms luckPerms = LuckPermsProvider.get();
+                User user = luckPerms.getUserManager().getUser(player.getUniqueId());
 
-        player.setDisplayName(displayName);
+                String name = Bukkit.getPlayer(user.getUniqueId()).getName();
+                String prefix = user.getCachedData().getMetaData().getPrefix();
+                String suffix = user.getCachedData().getMetaData().getSuffix();
+
+                if (prefix == null) {
+                    prefix = "";
+                }
+
+                if (suffix == null) {
+                    suffix = "";
+                }
+
+                String displayName = (prefix + name + suffix);
+
+                player.setDisplayName(displayName);
+
+            }
+        }.runTaskAsynchronously(PLUGIN);
 
     }
 
@@ -51,7 +77,7 @@ public class Formating {
         event.setFormat(displayName + ": " + message);
     }
 
-    public static void formatTab(Player player) {
+    public static void formatTabNames(Player player) {
 
         new BukkitRunnable() {
             @Override
@@ -65,9 +91,17 @@ public class Formating {
                 LuckPerms luckPerms = LuckPermsProvider.get();
                 User user = luckPerms.getUserManager().getUser(player.getUniqueId());
 
-                String name = user.getUsername();
+                String name = Bukkit.getPlayer(user.getUniqueId()).getName();
                 String prefix = user.getCachedData().getMetaData().getPrefix();
                 String suffix = user.getCachedData().getMetaData().getSuffix();
+
+                if (prefix == null) {
+                    prefix = "";
+                }
+
+                if (suffix == null) {
+                    suffix = "";
+                }
 
                 while (!tabPlayer.isLoaded()) return;
 
@@ -95,6 +129,14 @@ public class Formating {
 
                 String prefix = user.getCachedData().getMetaData().getPrefix();
                 String suffix = user.getCachedData().getMetaData().getSuffix();
+
+                if (prefix == null) {
+                    prefix = "";
+                }
+
+                if (suffix == null) {
+                    suffix = "";
+                }
 
                 while (!tabPlayer.isLoaded()) return;
 
