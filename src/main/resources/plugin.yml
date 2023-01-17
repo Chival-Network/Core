@@ -12,6 +12,3 @@ commands:
   speed:
     usage: /speed <speed> [player]
     description: A command used to change speed
-  tab:
-    usage: /speed <speed> [player]
-    description: A command used to change speed
