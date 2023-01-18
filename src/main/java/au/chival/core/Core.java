@@ -2,6 +2,7 @@ package au.chival.core;
 
 import au.chival.core.commands.*;
 import au.chival.core.events.*;
+import au.chival.core.events.LuckpermsEvents;
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -10,7 +11,6 @@ import java.util.logging.Logger;
 
 public final class Core extends JavaPlugin {
     public static JavaPlugin PLUGIN;
-
 
     @Override
     public void onEnable() {

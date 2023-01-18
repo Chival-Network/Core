@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class TabCommand extends CommandBase {
+
     public TabCommand() {
         super("tab", true, "chival.tab");
     }
