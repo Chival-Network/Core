@@ -25,6 +25,7 @@ public final class Core extends JavaPlugin {
         new TabCommand();
         new SudoCommand();
         new GamemodeCommand();
+        new RankCommand();
         // heal
         // feed
         // clear inventory

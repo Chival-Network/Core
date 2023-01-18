@@ -2,9 +2,16 @@ package au.chival.core;
 
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.data.DataMutateResult;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.types.InheritanceNode;
+import net.luckperms.api.query.Flag;
+import net.luckperms.api.query.QueryOptions;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+
+import static net.luckperms.api.node.NodeType.INHERITANCE;
 
 public class Rank {
 
@@ -20,8 +27,14 @@ public class Rank {
             return;
         }
 
-        user.setPrimaryGroup(group.getName());
-        luckPerms.getUserManager().saveUser(user);
+        user.getNodes().forEach(value -> {
+            if (value.getType().equals(INHERITANCE)) {
+                user.data().remove(value);
+            }
+        });
 
+        InheritanceNode node = InheritanceNode.builder(group.getName()).value(true).build();
+        user.data().add(node);
+        player.sendMessage(ChatColor.GREEN + "Your rank has been changed to " + group.getName());
     }
 }

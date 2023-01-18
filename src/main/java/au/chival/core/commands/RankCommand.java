@@ -22,7 +22,7 @@ public class RankCommand extends CommandBase {
     public RankCommand() {super("rank", true, "chival.rank");}
 
     @Override
-    public void execute(CommandSender sender, Command command, String[] args) {
+    public void execute(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length != 2) {
             sender.sendMessage(tl("rank-command.invalid-args"));

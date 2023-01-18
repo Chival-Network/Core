@@ -22,6 +22,10 @@ commands:
     usage: /gm(c, s, a, sp) [player]
     description: A command used to change gamemodes
     aliases: [gms, gma, gmsp]
+  rank:
+    usage: /rank <player> <rank>
+    description: A command used to change gamemodes
+    aliases: [ gms, gma, gmsp ]
 
 permissions:
   chival.help:
@@ -45,3 +49,6 @@ permissions:
     description: Allows the user to use the gamemode command
   chival.gamemode.others:
     description: Allows the user to use the gamemode command on other players
+  chival.rank:
+    description: Allows the user change others ranks
+    default: false
