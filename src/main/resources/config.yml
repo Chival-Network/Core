@@ -1,9 +1,8 @@
-discord: "https://discord.gg/kuz6EJpuZ9"
-
 # {NAME} for plain username
+# {DISPLAYNAME} for username with prefix and suffix/coloring
 chat-format: "{DISPLAYNAME}&7: &r{MESSAGE}"
 
-# Or "none" to disable
+# "none" for Minecraft default message or "" for no message
 join-message: "&7{DISPLAYNAME} &7joined the game."
 leave-message: "&7{DISPLAYNAME} &7left the game."
 

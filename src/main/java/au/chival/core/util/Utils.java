@@ -1,13 +1,19 @@
 package au.chival.core.util;
 
+import au.chival.core.Core;
 import me.neznamy.tab.api.TabAPI;
 import me.neznamy.tab.api.TabPlayer;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
+import org.apache.commons.io.IOUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.util.logging.Logger;
 
 import static au.chival.core.Core.PLUGIN;
 
@@ -88,5 +94,27 @@ public class Utils {
                 }
             }
         }.runTaskAsynchronously(PLUGIN);
+    }
+
+    /**
+     * This method makes sure a resource exists, if so
+     * it will return the file contents, if not it will
+     * create the file and return the default contents from the jar.
+     * @param path The path to the resource
+     * @return The contents of the resource or null if it doesn't exist in the jar file
+     */
+    public static String getOrCreateResource(String path) {
+        try { // Try to read the file contents from disk in plugin data folder
+            return IOUtils.toString(Files.newInputStream(new File(Core.PLUGIN.getDataFolder(), path).toPath()));
+        } catch (Exception e) {
+            Core.PLUGIN.saveResource(path, false); // Will write default file to disk if it doesn't exist
+
+            try {
+                return IOUtils.toString(Core.PLUGIN.getResource(path)); // Get internal version from jar or newly written file
+            } catch (Exception e1) {
+                Logger.getLogger("Chival").warning("Failed to load default " + path + "file: " + e1.getMessage());
+                return null;
+            }
+        }
     }
 }
