@@ -6,7 +6,12 @@ chat-format: "{DISPLAYNAME}&r: {MESSAGE}"
 join-message: "&7{DISPLAYNAME} &7joined the game."
 leave-message: "&7{DISPLAYNAME} &7left the game."
 
+# what shows in the tab/player list
 tab-header: "{INFO}You Are Playing On &6&lMC.CHIVAL.AU"
 tab-footer: "{INFO}Do {SUCCESS}/help {INFO}for help"
 
+# show the message the displays when a player dies
 death-messages-enabled: false
+
+# worlds/world that will disable damage/hunger and block place/break
+lobby-worlds: [world, please, set, your, worlds]

@@ -24,8 +24,13 @@ commands:
     aliases: [gms, gma, gmsp]
   rank:
     usage: /rank <player> <rank>
-    description: A command used to change gamemodes
-    aliases: [ gms, gma, gmsp ]
+    description: A command used to change players ranks
+  heal:
+    usage: /heal <player>
+    description: A command used to heal players
+  setspawn:
+    usage: /setspawn
+    description: A command used to set the world spawn
 
 permissions:
   chival.help:
@@ -51,4 +56,10 @@ permissions:
     description: Allows the user to use the gamemode command on other players
   chival.rank:
     description: Allows the user change others ranks
+    default: false
+  chival.build:
+    description: Allows the user to build in the lobby
+    default: false
+  chival.setspawn:
+    description: Allows the user to set the world spawn
     default: false

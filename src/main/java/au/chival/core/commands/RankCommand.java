@@ -1,7 +1,6 @@
 package au.chival.core.commands;
 
 import au.chival.core.CommandBase;
-import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
 import org.bukkit.Bukkit;
