@@ -8,7 +8,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import static au.chival.core.Tab.formatTab;
 
 public class JoinEvent implements Listener {
     private static final String JOIN_MESSAGE = ChatColor.translateAlternateColorCodes('&', Core.PLUGIN.getConfig().getString("join-message", "none"));
@@ -23,7 +22,6 @@ public class JoinEvent implements Listener {
                 .replace("{NAME}", event.getPlayer().getName())
                 .replace("{DISPLAYNAME}", event.getPlayer().getDisplayName()));
 
-        Utils.formatTabAndNametag(event.getPlayer());
-        formatTab(event.getPlayer(), null, null);
+        Utils.updateTab(event.getPlayer());
     }
 }

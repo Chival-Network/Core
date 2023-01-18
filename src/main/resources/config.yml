@@ -1,5 +1,6 @@
-discord-invite: "https://discord.gg/kuz6EJpuZ9"
+discord: "https://discord.gg/kuz6EJpuZ9"
 
+# {NAME} for plain username
 chat-format: "{DISPLAYNAME}&7: &r{MESSAGE}"
 
 # Or "none" to disable
@@ -7,4 +8,4 @@ join-message: "&7{DISPLAYNAME} &7joined the game."
 leave-message: "&7{DISPLAYNAME} &7left the game."
 
 tab-header: "Welcome to Chival!"
-tab-footer: "VER: 0.0.1"
+tab-footer: "VER: 0.0.2"

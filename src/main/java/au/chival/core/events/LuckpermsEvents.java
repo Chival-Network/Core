@@ -21,6 +21,6 @@ public class LuckpermsEvents {
         if (player == null) return;
 
         player.setDisplayName(Utils.getDisplayName(player));
-        Utils.formatTabAndNametag(player);
+        Utils.updateTab(player);
     }
 }

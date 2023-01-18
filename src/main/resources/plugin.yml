@@ -18,7 +18,7 @@ commands:
 
 permissions:
   chival.help:
-    description: Allows the player to use the help command
+    description: Allows the user to use the help command
     default: true
   chival.fly:
     description: Allows the user to use the fly command

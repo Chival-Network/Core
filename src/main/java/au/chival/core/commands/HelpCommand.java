@@ -12,6 +12,8 @@ import static au.chival.core.util.I18n.SUCCESS;
 
 
 public class HelpCommand extends CommandBase {
+    private final String DISCORD = Core.PLUGIN.getConfig().getString("discord");
+
     public HelpCommand() {
         super("help", true, "chival.help");
     }
@@ -21,7 +23,7 @@ public class HelpCommand extends CommandBase {
         sender.sendMessage(" ");
         sender.sendMessage(INFO + ChatColor.BOLD + "Welcome to Chival-Network®");
         sender.sendMessage(INFO + "Use the compass in lobby to select a server");
-        sender.sendMessage(INFO + "Discord: " + SUCCESS + Core.PLUGIN.getConfig().getString("discord-invite"));
+        sender.sendMessage(INFO + "Discord: " + SUCCESS + DISCORD);
         sender.sendMessage(INFO + "Ask a staff member for more info");
         sender.sendMessage(" ");
         sender.sendMessage(INFO + "Core Version: " + SUCCESS + Core.PLUGIN.getDescription().getVersion());
