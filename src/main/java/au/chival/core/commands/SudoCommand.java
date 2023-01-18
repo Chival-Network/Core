@@ -5,6 +5,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.util.StringUtil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class SudoCommand extends CommandBase {
@@ -40,5 +46,14 @@ public class SudoCommand extends CommandBase {
 
 		target.chat(cmd);
 		sender.sendMessage(tl("sudo.execute", target.getName(), cmd));
+	}
+
+	public List<String> tabComplete(CommandSender sender, Command command, String[] args) {
+
+		if (args.length == 1) {
+			return null;
+		}
+
+		return Collections.EMPTY_LIST;
 	}
 }

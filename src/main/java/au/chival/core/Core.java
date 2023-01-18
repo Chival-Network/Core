@@ -22,7 +22,6 @@ public final class Core extends JavaPlugin {
         new HelpCommand();
         new FlyCommand();
         new SpeedCommand();
-        new TabCommand();
         new SudoCommand();
         new GamemodeCommand();
         new RankCommand();
