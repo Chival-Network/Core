@@ -12,3 +12,6 @@ commands:
   speed:
     usage: /speed <speed> [player]
     description: A command used to change speed
+  rank:
+    usage: /rank <player> <ranks>
+    description: A command used to change players ranks

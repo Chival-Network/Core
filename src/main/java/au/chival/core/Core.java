@@ -2,9 +2,11 @@ package au.chival.core;
 
 import au.chival.core.commands.Fly;
 import au.chival.core.commands.Help;
+import au.chival.core.commands.RankCommand;
 import au.chival.core.commands.Speed;
 import au.chival.core.listeners.Chat;
 import au.chival.core.listeners.Join;
+import au.chival.core.listeners.Leave;
 import au.chival.core.listeners.LuckpermEvents;
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,11 +26,13 @@ public final class Core extends JavaPlugin {
         new Help();
         new Fly();
         new Speed();
+        new RankCommand();
         //
 
         //listener-reg
         new LuckpermEvents(PLUGIN, LuckPermsProvider.get());
         getServer().getPluginManager().registerEvents(new Join(), PLUGIN);
+        getServer().getPluginManager().registerEvents(new Leave(), PLUGIN);
         getServer().getPluginManager().registerEvents(new Chat(), PLUGIN);
         //
 

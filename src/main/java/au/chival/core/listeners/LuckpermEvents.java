@@ -19,8 +19,10 @@ public class LuckpermEvents {
     }
 
     private void onUserPromote(UserDataRecalculateEvent event) {
+
         formatTabNames(Bukkit.getPlayer(event.getUser().getUniqueId()));
         formatTabNames(Bukkit.getPlayer(event.getUser().getUniqueId()));
         foramtDisplayName(Bukkit.getPlayer(event.getUser().getUniqueId()));
+
     }
 }
