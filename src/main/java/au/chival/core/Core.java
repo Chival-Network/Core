@@ -1,9 +1,6 @@
 package au.chival.core;
 
-import au.chival.core.commands.FlyCommand;
-import au.chival.core.commands.HelpCommand;
-import au.chival.core.commands.SpeedCommand;
-import au.chival.core.commands.TabCommand;
+import au.chival.core.commands.*;
 import au.chival.core.events.*;
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +23,12 @@ public final class Core extends JavaPlugin {
         new FlyCommand();
         new SpeedCommand();
         new TabCommand();
+        new SudoCommand();
+        // gamemode
+        // heal
+        // feed
+        // clear inventory
+
 
         // Init listeners
         new LuckpermsEvents(PLUGIN, LuckPermsProvider.get());

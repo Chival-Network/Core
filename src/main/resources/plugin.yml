@@ -15,6 +15,9 @@ commands:
   tab:
     usage: /speed <speed> [player]
     description: A command used to change speed
+  sudo:
+    usage: /sudo <player> <command>
+    description: A command used to run a command as another player
 
 permissions:
   chival.help:
@@ -30,3 +33,7 @@ permissions:
     description: Allows the user to use the speed command on other players
   chival.chatcolor:
     description: Allows the user to use color codes in chat
+  chival.sudo:
+    description: Allows the user to use the sudo command
+  chival.sudo.exempt:
+    description: Allows the user to be exempt from the sudo command
