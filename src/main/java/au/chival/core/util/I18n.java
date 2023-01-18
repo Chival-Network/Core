@@ -30,12 +30,13 @@ public class I18n {
 		msg = msg.replace("%error%", ERROR);
 		msg = msg.replace("%success%", SUCCESS);
 		msg = msg.replace("%warning%", WARNING);
+		msg = ChatColor.translateAlternateColorCodes('&', msg);
 
 		for (int i = 0; i < args.length; i++) {
 			if (args[i] == null) continue;
 			msg = msg.replace("{" + i + "}", args[i].toString());
 		}
 
-		return ChatColor.translateAlternateColorCodes('&', msg);
+		return msg;
 	}
 }

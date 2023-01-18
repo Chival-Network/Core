@@ -8,19 +8,23 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 
-public class Speed extends CommandBase {
-    public Speed() {
-        super("speed", false, "chival.speed");
+public class SpeedCommand extends CommandBase {
+    public SpeedCommand() {
+        super("speed", true, "chival.speed");
     }
 
     @Override
     public void execute(CommandSender sender, Command command, String[] args) {
         if (args.length < 1) {
+            sender.sendMessage(tl("speed.usage"));
+            return;
+        }
+
+        if (args.length < 2 && !(sender instanceof Player)) {
             sender.sendMessage(tl("speed.usage"));
             return;
         }
@@ -73,6 +77,6 @@ public class Speed extends CommandBase {
             return StringUtil.copyPartialMatches(args[0], tab, new ArrayList<>());
         }
 
-        return Collections.EMPTY_LIST;
+        return null;
     }
 }

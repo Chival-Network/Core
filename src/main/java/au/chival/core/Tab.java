@@ -10,12 +10,9 @@ import static au.chival.core.Core.PLUGIN;
 public class Tab {
 
     public static void formatTab(Player player, String header, String footer) {
-
         new BukkitRunnable() {
-
             @Override
             public void run() {
-
                 while (player == null) return;
 
                 TabAPI tabAPI = TabAPI.getInstance();

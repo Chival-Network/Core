@@ -1,3 +1,10 @@
 discord-invite: "https://discord.gg/kuz6EJpuZ9"
+
+chat-format: "{DISPLAYNAME}&7: &r{MESSAGE}"
+
+# Or "none" to disable
+join-message: "&7{DISPLAYNAME} &7joined the game."
+leave-message: "&7{DISPLAYNAME} &7left the game."
+
 tab-header: "Welcome to Chival!"
 tab-footer: "VER: 0.0.1"
