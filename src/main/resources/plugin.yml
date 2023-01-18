@@ -18,6 +18,10 @@ commands:
   sudo:
     usage: /sudo <player> <command>
     description: A command used to run a command as another player
+  gmc:
+    usage: /gm(c, s, a, sp) [player]
+    description: A command used to change gamemodes
+    aliases: [gms, gma, gmsp]
 
 permissions:
   chival.help:
@@ -37,3 +41,7 @@ permissions:
     description: Allows the user to use the sudo command
   chival.sudo.exempt:
     description: Allows the user to be exempt from the sudo command
+  chival.gamemode:
+    description: Allows the user to use the gamemode command
+  chival.gamemode.others:
+    description: Allows the user to use the gamemode command on other players

@@ -23,7 +23,7 @@ public class HelpCommand extends CommandBase {
     }
 
     @Override
-    public void execute(CommandSender sender, Command command, String[] args) {
+    public void execute(CommandSender sender, Command command, String label, String[] args) {
         sender.sendMessage(HELP_MESSAGE.replace("{ONLINE}", String.valueOf(Bukkit.getOnlinePlayers().size())).split("\r?\n"));
     }
 }

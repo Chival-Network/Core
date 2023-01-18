@@ -34,7 +34,7 @@ public abstract class CommandBase {
 				return true;
 			}
 
-			execute(sender, command, args);
+			execute(sender, command, label, args);
 			return true;
 		});
 
@@ -46,7 +46,7 @@ public abstract class CommandBase {
 	}
 
 
-	public abstract void execute(CommandSender sender, Command command, String[] args);
+	public abstract void execute(CommandSender sender, Command command, String label, String[] args);
 
 	public List<String> tabComplete(CommandSender sender, Command command, String[] args) {
 		return null;

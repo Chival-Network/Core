@@ -24,7 +24,7 @@ public final class Core extends JavaPlugin {
         new SpeedCommand();
         new TabCommand();
         new SudoCommand();
-        // gamemode
+        new GamemodeCommand();
         // heal
         // feed
         // clear inventory

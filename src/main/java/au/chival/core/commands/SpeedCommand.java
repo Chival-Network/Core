@@ -18,7 +18,7 @@ public class SpeedCommand extends CommandBase {
     }
 
     @Override
-    public void execute(CommandSender sender, Command command, String[] args) {
+    public void execute(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
             sender.sendMessage(tl("speed.usage"));
             return;

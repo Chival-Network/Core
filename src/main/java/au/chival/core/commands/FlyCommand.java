@@ -15,13 +15,13 @@ public class FlyCommand extends CommandBase {
 	}
 
 	@Override
-	public void execute(CommandSender sender, Command command, String[] args) {
+	public void execute(CommandSender sender, Command command, String label, String[] args) {
 		Player target;
 		boolean self = true;
 
 		if (args.length == 1) {
 			target = getPlayer(args[0]);
-			if (target != null && !target.getName().equals(sender.getName())) self = false;
+			if (target != sender) self = false;
 		} else if (sender instanceof Player) {
 			target = (Player) sender;
 		} else {
