@@ -32,7 +32,7 @@ public class I18n {
 		try {
 			return BUNDLE.getString(key);
 		} catch (Exception e) {
-			Logger.getLogger("Chival").warning("Missing translation for key: " + key);
+			Logger.getLogger("Core").warning("Missing translation for key: " + key);
 			return key;
 		}
 	}

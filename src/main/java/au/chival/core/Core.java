@@ -34,7 +34,8 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatEvent(), PLUGIN);
         getServer().getPluginManager().registerEvents(new DeathEvent(), PLUGIN);
 
-        Logger.getLogger("Chival").info("ChivalCore v" + this.getDescription().getVersion() + " successfully loaded");
+
+        Logger.getLogger("Core").info("ChivalCore v" + this.getDescription().getVersion() + " successfully loaded");
     }
 
     @Override

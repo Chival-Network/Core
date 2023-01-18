@@ -112,7 +112,7 @@ public class Utils {
             try {
                 return IOUtils.toString(Core.PLUGIN.getResource(path)); // Get internal version from jar or newly written file
             } catch (Exception e1) {
-                Logger.getLogger("Chival").warning("Failed to load default " + path + "file: " + e1.getMessage());
+                Logger.getLogger("Core").warning("Failed to load default " + path + "file: " + e1.getMessage());
                 return null;
             }
         }
