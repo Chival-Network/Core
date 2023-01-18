@@ -23,14 +23,17 @@ public class I18n {
 		}
 	}
 
-	public static String format(String key, Object... args) {
-		String msg = get(key);
-
-		msg = msg.replace("%info%", INFO);
-		msg = msg.replace("%error%", ERROR);
-		msg = msg.replace("%success%", SUCCESS);
-		msg = msg.replace("%warning%", WARNING);
+	public static String colorize(String msg) {
 		msg = ChatColor.translateAlternateColorCodes('&', msg);
+
+		return msg.replace("{INFO}", INFO)
+			.replace("{ERROR}", ERROR)
+			.replace("{SUCCESS}", SUCCESS)
+			.replace("{WARNING}", WARNING);
+	}
+
+	public static String format(String key, Object... args) {
+		String msg = colorize(get(key));
 
 		for (int i = 0; i < args.length; i++) {
 			if (args[i] == null) continue;

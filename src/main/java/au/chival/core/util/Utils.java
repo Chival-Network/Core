@@ -13,8 +13,9 @@ import static au.chival.core.Core.PLUGIN;
 
 
 public class Utils {
-    private static final String TAB_HEADER = ChatColor.translateAlternateColorCodes('&', PLUGIN.getConfig().getString("tab-header"));
-    private static final String TAB_FOOTER = ChatColor.translateAlternateColorCodes('&', PLUGIN.getConfig().getString("tab-footer"));
+    private static final String TAB_HEADER = I18n.colorize(PLUGIN.getConfig().getString("tab-header"));
+    private static final String TAB_FOOTER = I18n.colorize(PLUGIN.getConfig().getString("tab-footer"));
+
 
     /**
      * Should be called in the join event, and luck perms user update event

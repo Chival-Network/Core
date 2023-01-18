@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 public final class Core extends JavaPlugin {
     public static JavaPlugin PLUGIN;
 
+
     @Override
     public void onEnable() {
         PLUGIN = this;

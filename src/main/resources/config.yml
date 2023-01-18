@@ -7,5 +7,5 @@ chat-format: "{DISPLAYNAME}&7: &r{MESSAGE}"
 join-message: "&7{DISPLAYNAME} &7joined the game."
 leave-message: "&7{DISPLAYNAME} &7left the game."
 
-tab-header: "Welcome to Chival!"
-tab-footer: "VER: 0.0.2"
+tab-header: "{INFO}Welcome to Chival!"
+tab-footer: "&7VERSION: {SUCCESS}0.0.2"
