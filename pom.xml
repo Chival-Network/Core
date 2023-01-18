@@ -6,7 +6,7 @@
 
     <groupId>au.chival</groupId>
     <artifactId>core</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>Core</name>

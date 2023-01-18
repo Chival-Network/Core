@@ -45,7 +45,6 @@ public class Formating {
             public void run() {
 
                 while (player == null) return;
-                while (Bukkit.getPlayer(player.getUniqueId()) == null) return;
 
                 LuckPerms luckPerms = LuckPermsProvider.get();
                 User user = luckPerms.getUserManager().getUser(player.getUniqueId());
@@ -85,7 +84,6 @@ public class Formating {
             public void run() {
 
                 while (player == null) return;
-                while (Bukkit.getPlayer(player.getUniqueId()) == null) return;
 
                 TabAPI tabAPI = TabAPI.getInstance();
                 TabPlayer tabPlayer = tabAPI.getPlayer(player.getUniqueId());
@@ -122,7 +120,6 @@ public class Formating {
             public void run() {
 
                 while (player == null) return;
-                while (Bukkit.getPlayer(player.getUniqueId()) == null) return;
 
                 TabAPI tabAPI = TabAPI.getInstance();
                 TabPlayer tabPlayer = tabAPI.getPlayer(player.getUniqueId());

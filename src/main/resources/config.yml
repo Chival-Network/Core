@@ -1,3 +1,12 @@
-discord-invite: "https://discord.gg/kuz6EJpuZ9"
-tab-header: "Welcome to Chival!"
-tab-footer: "VER: 0.0.1"
+# {NAME} for plain username
+# {DISPLAYNAME} for username with prefix and suffix/coloring
+chat-format: "{DISPLAYNAME}&r: {MESSAGE}"
+
+# "none" for Minecraft default message or "" for no message
+join-message: "&7{DISPLAYNAME} &7joined the game."
+leave-message: "&7{DISPLAYNAME} &7left the game."
+
+tab-header: "{INFO}You Are Playing On &6&lMC.CHIVAL.AU"
+tab-footer: "{INFO}Do {SUCCESS}/help {INFO}for help"
+
+death-messages-enabled: false

@@ -9,23 +9,23 @@ import org.bukkit.entity.Player;
 import static org.bukkit.Bukkit.getPlayer;
 
 
-public class Fly extends CommandBase {
-	public Fly() {
+public class FlyCommand extends CommandBase {
+	public FlyCommand() {
 		super("fly", true, "chival.fly");
 	}
 
 	@Override
-	public void execute(CommandSender sender, Command command, String[] args) {
+	public void execute(CommandSender sender, Command command, String label, String[] args) {
 		Player target;
 		boolean self = true;
 
 		if (args.length == 1) {
 			target = getPlayer(args[0]);
-			if (target != null && !target.getName().equals(sender.getName())) self = false;
+			if (target != sender) self = false;
 		} else if (sender instanceof Player) {
 			target = (Player) sender;
 		} else {
-			sender.sendMessage("Invalid arguments for console, please specify a player");
+			sender.sendMessage(tl("player-not-found"));
 			return;
 		}
 
