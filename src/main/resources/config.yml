@@ -1,10 +1,12 @@
 # {NAME} for plain username
 # {DISPLAYNAME} for username with prefix and suffix/coloring
-chat-format: "{DISPLAYNAME}&7: &r{MESSAGE}"
+chat-format: "{DISPLAYNAME}&r: {MESSAGE}"
 
 # "none" for Minecraft default message or "" for no message
 join-message: "&7{DISPLAYNAME} &7joined the game."
 leave-message: "&7{DISPLAYNAME} &7left the game."
 
-tab-header: "{INFO}Welcome to Chival!"
-tab-footer: "&7VERSION: {SUCCESS}0.0.2"
+tab-header: "{INFO}You Are Playing On &6&lMC.CHIVAL.AU"
+tab-footer: "{INFO}Do {SUCCESS}/help {INFO}for help"
+
+death-messages-enabled: false

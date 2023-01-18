@@ -4,10 +4,7 @@ import au.chival.core.commands.FlyCommand;
 import au.chival.core.commands.HelpCommand;
 import au.chival.core.commands.SpeedCommand;
 import au.chival.core.commands.TabCommand;
-import au.chival.core.events.ChatEvent;
-import au.chival.core.events.JoinEvent;
-import au.chival.core.events.LeaveEvent;
-import au.chival.core.events.LuckpermsEvents;
+import au.chival.core.events.*;
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,6 +32,7 @@ public final class Core extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinEvent(), PLUGIN);
         getServer().getPluginManager().registerEvents(new LeaveEvent(), PLUGIN);
         getServer().getPluginManager().registerEvents(new ChatEvent(), PLUGIN);
+        getServer().getPluginManager().registerEvents(new DeathEvent(), PLUGIN);
 
         Logger.getLogger("Chival").info("ChivalCore v" + this.getDescription().getVersion() + " successfully loaded");
     }
