@@ -1,4 +1,4 @@
-package au.chival.core.events;
+package au.chival.core.listener;
 
 import au.chival.core.Core;
 import au.chival.core.util.I18n;
@@ -6,9 +6,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class LeaveEvent implements Listener {
+
+public class PlayerQuitListener implements Listener {
 	private static final String LEAVE_MESSAGE = I18n.colorize(Core.PLUGIN.getConfig().getString("leave-message", "none"));
-	private static final boolean LEAVE_MESSAGE_ENABLED = !LEAVE_MESSAGE.equals("none");
+	private static final boolean LEAVE_MESSAGE_ENABLED = !LEAVE_MESSAGE.equals("off");
 
 
 	@EventHandler

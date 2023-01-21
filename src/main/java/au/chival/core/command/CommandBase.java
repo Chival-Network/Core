@@ -1,6 +1,8 @@
-package au.chival.core;
+package au.chival.core.command;
 
+import au.chival.core.Core;
 import au.chival.core.util.I18n;
+import au.chival.core.util.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -40,7 +42,7 @@ public abstract class CommandBase {
 
 		// Require permission to tab complete
 		Core.PLUGIN.getCommand(name).setTabCompleter((sender, command, alias, args) -> {
-			if (permission != null && !sender.hasPermission(permission)) return null;
+			if (permission != null && !sender.hasPermission(permission)) return Utils.EMPTY_LIST;
 			return tabComplete(sender, command, args);
 		});
 	}
@@ -49,7 +51,8 @@ public abstract class CommandBase {
 	public abstract void execute(CommandSender sender, Command command, String label, String[] args);
 
 	public List<String> tabComplete(CommandSender sender, Command command, String[] args) {
-		return null;
+		if (args.length == 1) return null; // By default, tab complete first arg as username unless overridden
+		return Utils.EMPTY_LIST;
 	}
 
 	protected String tl(String key, Object... args) {

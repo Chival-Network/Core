@@ -2,22 +2,20 @@ name: Core
 version: '${project.version}'
 main: au.chival.core.Core
 api-version: 1.8.8
+depend: [LuckPerms]
 commands:
   help:
-    usage: /help <tag>
-    description: A command used to get help
+    usage: /help
+    description: Display the help menu
   fly:
     usage: /fly [player]
     description: A command used to toggle flight
   speed:
     usage: /speed <speed> [player]
     description: A command used to change speed
-  tab:
-    usage: /speed <speed> [player]
-    description: A command used to change speed
   sudo:
     usage: /sudo <player> <command>
-    description: A command used to run a command as another player
+    description: Run a command as another player
   gmc:
     usage: /gm(c, s, a, sp) [player]
     description: A command used to change gamemodes
@@ -26,13 +24,15 @@ commands:
     usage: /rank <player> <rank>
     description: A command used to change players ranks
   heal:
-    usage: /heal <player>
-    description: A command used to heal players
-  setspawn:
-    usage: /setspawn
-    description: A command used to set the world spawn
+    usage: /heal [player]
+    description: Set a player to full health and hunger, extinguish them, and remove all potion effects
+  feed:
+    usage: /feed [player]
+    description: Set a player to full hunger
 
 permissions:
+  chival.chatcolor:
+    description: Allows the user to use color codes in chat
   chival.help:
     description: Allows the user to use the help command
     default: true
@@ -44,8 +44,6 @@ permissions:
     description: Allows the user to use the speed command
   chival.speed.others:
     description: Allows the user to use the speed command on other players
-  chival.chatcolor:
-    description: Allows the user to use color codes in chat
   chival.sudo:
     description: Allows the user to use the sudo command
   chival.sudo.exempt:
@@ -56,10 +54,13 @@ permissions:
     description: Allows the user to use the gamemode command on other players
   chival.rank:
     description: Allows the user change others ranks
-    default: false
-  chival.build:
-    description: Allows the user to build in the lobby
-    default: false
-  chival.setspawn:
-    description: Allows the user to set the world spawn
-    default: false
+  chival.heal:
+    description: Allows the user to use the heal command
+  chival.heal.others:
+    description: Allows the user to use the heal command on other players
+  chival.heal.exempt:
+    description: Allows the user to be exempt from the heal cooldown
+  chival.feed:
+    description: Allows the user to use the feed command
+  chival.feed.others:
+    description: Allows the user to use the feed command on other players
