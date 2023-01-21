@@ -1,6 +1,5 @@
-package au.chival.core.commands;
+package au.chival.core.command;
 
-import au.chival.core.CommandBase;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

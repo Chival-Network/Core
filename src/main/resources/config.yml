@@ -1,12 +1,19 @@
 # {NAME} for plain username
 # {DISPLAYNAME} for username with prefix and suffix/coloring
+# Set to "off" to let other plugins handle this
 chat-format: "{DISPLAYNAME}&r: {MESSAGE}"
 
-# "none" for Minecraft default message or "" for no message
+# Set to "off" to let other plugins handle this
+# Set to "" for no message
 join-message: "&7{DISPLAYNAME} &7joined the game."
 leave-message: "&7{DISPLAYNAME} &7left the game."
 
+# What shows in the tab/player list
 tab-header: "{INFO}You Are Playing On &6&lMC.CHIVAL.AU"
 tab-footer: "{INFO}Do {SUCCESS}/help {INFO}for help"
 
+# Show the default message that displays when a player dies
 death-messages-enabled: false
+
+# Cooldown for using /heal in seconds
+heal-cooldown: 60

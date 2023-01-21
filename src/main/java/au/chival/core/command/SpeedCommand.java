@@ -1,6 +1,6 @@
-package au.chival.core.commands;
+package au.chival.core.command;
 
-import au.chival.core.CommandBase;
+import au.chival.core.util.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -36,7 +36,7 @@ public class SpeedCommand extends CommandBase {
         }
 
         if (target != sender && !sender.hasPermission("chival.speed.others")) {
-            sender.sendMessage(tl("no-permission"));
+            sender.sendMessage(tl("no-permission-others"));
             return;
         }
 
@@ -62,8 +62,9 @@ public class SpeedCommand extends CommandBase {
                 target.setWalkSpeed(i);
             }
 
-            target.sendMessage(tl("speed.set", speed));
-            if (target != sender) sender.sendMessage(tl("speed.set.other", speed, target.getName()));
+            String type = target.isFlying() ? "Flying" : "Walking";
+            target.sendMessage(tl("speed.set", type, speed));
+            if (target != sender) sender.sendMessage(tl("speed.set.other", type, speed, target.getName()));
         } catch (Exception e) {
             sender.sendMessage(tl("speed.invalid"));
         }
@@ -75,8 +76,8 @@ public class SpeedCommand extends CommandBase {
         if (args.length == 1) {
             tab.add("reset");
             return StringUtil.copyPartialMatches(args[0], tab, new ArrayList<>());
-        }
+        } else if (args.length == 2) return null;
 
-        return null;
+        return Utils.EMPTY_LIST;
     }
 }

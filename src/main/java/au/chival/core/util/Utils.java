@@ -5,22 +5,28 @@ import me.neznamy.tab.api.TabAPI;
 import me.neznamy.tab.api.TabPlayer;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.types.InheritanceNode;
 import org.apache.commons.io.IOUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.nio.file.Files;
-import java.util.logging.Logger;
+import java.util.Collections;
+import java.util.List;
 
-import static au.chival.core.Core.PLUGIN;
+import static net.luckperms.api.node.NodeType.INHERITANCE;
 
 
 public class Utils {
-    private static final String TAB_HEADER = I18n.colorize(PLUGIN.getConfig().getString("tab-header"));
-    private static final String TAB_FOOTER = I18n.colorize(PLUGIN.getConfig().getString("tab-footer"));
+    public static final List<String> EMPTY_LIST = Collections.emptyList();
+    private static final String TAB_HEADER = I18n.colorize(Core.PLUGIN.getConfig().getString("tab-header"));
+    private static final String TAB_FOOTER = I18n.colorize(Core.PLUGIN.getConfig().getString("tab-footer"));
 
 
     /**
@@ -65,7 +71,7 @@ public class Utils {
             public void run() {
                 while (true) {
                     if (System.currentTimeMillis() - startTime > maxTime * 1000L) {
-                        PLUGIN.getLogger().warning("Tab update took too long for player " + player.getName());
+                        Core.PLUGIN.getLogger().warning("Tab update took too long for player " + player.getName());
                         return;
                     }
 
@@ -93,7 +99,7 @@ public class Utils {
                     break;
                 }
             }
-        }.runTaskAsynchronously(PLUGIN);
+        }.runTaskAsynchronously(Core.PLUGIN);
     }
 
     /**
@@ -112,9 +118,65 @@ public class Utils {
             try {
                 return IOUtils.toString(Core.PLUGIN.getResource(path)); // Get internal version from jar or newly written file
             } catch (Exception e1) {
-                Logger.getLogger("Core").warning("Failed to load default " + path + "file: " + e1.getMessage());
+                Core.PLUGIN.getLogger().warning("Failed to load default " + path + "file: " + e1.getMessage());
                 return null;
             }
         }
+    }
+
+    public static void setRank(Player player, Group group) {
+        LuckPerms luckPerms = LuckPermsProvider.get();
+        User user = luckPerms.getUserManager().getUser(player.getUniqueId());
+
+        assert user != null;
+
+        if (group == null) {
+            user.setPrimaryGroup("default");
+            return;
+        }
+
+        user.getNodes().forEach(value -> {
+            if (value.getType().equals(INHERITANCE)) {
+                user.data().remove(value);
+            }
+        });
+
+        InheritanceNode node = InheritanceNode.builder(group.getName()).value(true).build();
+        user.data().add(node);
+        player.sendMessage(ChatColor.GREEN + "Your rank has been changed to " + group.getName());
+    }
+
+    /**
+     * Get a player from the command arguments.
+     * Handles no permission message and player not found message.
+     * ONLY WORKS FOR COMMANDS WHERE THE PLAYER IS THE ONLY ARGUMENT
+     *
+     * @param sender The command sender
+     * @param args The command arguments
+     * @param othersPermission The permission required to target other players
+     * @return The player or null if not found
+     */
+    public static Player getPlayerFromArgs(CommandSender sender, String[] args, String othersPermission) {
+        Player target = null;
+        boolean self = true;
+
+        if (args.length == 1) {
+            target = Bukkit.getPlayer(args[0]);
+            if (target != sender) self = false;
+        } else if (sender instanceof Player) {
+            target = (Player) sender;
+        }
+
+        if (target == null) {
+            if (sender != null) sender.sendMessage(I18n.format("player-not-found"));
+            return null;
+        }
+
+        if (!self && !sender.hasPermission(othersPermission)) {
+            sender.sendMessage(I18n.format("no-permission-others"));
+            return null;
+        }
+
+        return target;
     }
 }

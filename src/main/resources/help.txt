@@ -1,7 +1,7 @@
 
 {INFO}&l&m------&r {INFO}&lWelcome to Chival-Network &r{INFO}&l&m------
 {INFO}Use the compass in the lobby to select a server.
-{INFO}Join our Discord: {SUCCESS}&lhttps://discord.gg/kuz6EJpuZ9
+{INFO}Join our Discord: &0< {SUCCESS}&lhttps://discord.gg/kuz6EJpuZ9 &0>
 {INFO}Questions? Feel free to ask a staff member.
 
 {INFO}Online Players: {SUCCESS}{ONLINE}

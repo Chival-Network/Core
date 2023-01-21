@@ -1,4 +1,4 @@
-package au.chival.core.events;
+package au.chival.core.listener;
 
 import au.chival.core.Core;
 import org.bukkit.event.EventHandler;
@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 
-public class DeathEvent implements Listener {
+public class PlayerDeathListener implements Listener {
 	private final boolean DEATH_MESSAGES_ENABLED = Core.PLUGIN.getConfig().getBoolean("death-messages-enabled", false);
 
 

@@ -1,11 +1,9 @@
 package au.chival.core;
 
-import au.chival.core.commands.*;
-import au.chival.core.events.*;
+import au.chival.core.command.*;
+import au.chival.core.listener.*;
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.logging.Logger;
 
 
 public final class Core extends JavaPlugin {
@@ -15,30 +13,27 @@ public final class Core extends JavaPlugin {
     @Override
     public void onEnable() {
         PLUGIN = this;
-
         this.saveDefaultConfig();
 
         // Init commands
         new HelpCommand();
         new FlyCommand();
         new SpeedCommand();
-        new TabCommand();
         new SudoCommand();
         new GamemodeCommand();
-        // heal
-        // feed
-        // clear inventory
-
+        new RankCommand();
+        new HealCommand();
+        new FeedCommand();
 
         // Init listeners
         new LuckpermsEvents(PLUGIN, LuckPermsProvider.get());
-        getServer().getPluginManager().registerEvents(new JoinEvent(), PLUGIN);
-        getServer().getPluginManager().registerEvents(new LeaveEvent(), PLUGIN);
-        getServer().getPluginManager().registerEvents(new ChatEvent(), PLUGIN);
-        getServer().getPluginManager().registerEvents(new DeathEvent(), PLUGIN);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), PLUGIN);
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(), PLUGIN);
+        getServer().getPluginManager().registerEvents(new PlayerChatListener(), PLUGIN);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), PLUGIN);
 
 
-        Logger.getLogger("Core").info("ChivalCore v" + this.getDescription().getVersion() + " successfully loaded");
+        this.getLogger().info("Core v" + this.getDescription().getVersion() + " successfully loaded");
     }
 
     @Override

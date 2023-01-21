@@ -1,4 +1,4 @@
-package au.chival.core.events;
+package au.chival.core.listener;
 
 import au.chival.core.util.Utils;
 import net.luckperms.api.LuckPerms;

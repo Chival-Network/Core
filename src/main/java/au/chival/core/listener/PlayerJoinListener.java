@@ -1,4 +1,4 @@
-package au.chival.core.events;
+package au.chival.core.listener;
 
 import au.chival.core.Core;
 import au.chival.core.util.I18n;
@@ -6,15 +6,15 @@ import au.chival.core.util.Utils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 
 
-public class JoinEvent implements Listener {
+public class PlayerJoinListener implements Listener {
     private static final String JOIN_MESSAGE = I18n.colorize(Core.PLUGIN.getConfig().getString("join-message", "none"));
-    private static final boolean JOIN_MESSAGE_ENABLED = !JOIN_MESSAGE.equals("none");
+    private static final boolean JOIN_MESSAGE_ENABLED = !JOIN_MESSAGE.equals("off");
+
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public void onPlayerJoin(org.bukkit.event.player.PlayerJoinEvent event) {
         event.getPlayer().setDisplayName(Utils.getDisplayName(event.getPlayer()));
 
         if (JOIN_MESSAGE_ENABLED)
