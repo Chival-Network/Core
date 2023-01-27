@@ -7,6 +7,10 @@ commands:
   help:
     usage: /help
     description: Display the help menu
+  lobby:
+    usage: /lobby
+    description: Sends you to lobby
+    aliases: [l, hub, zoo]
   fly:
     usage: /fly [player]
     description: A command used to toggle flight

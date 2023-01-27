@@ -32,7 +32,7 @@ public abstract class CommandBase {
 			}
 
 			if (permission != null && !sender.hasPermission(permission)) {
-				sender.sendMessage(tl("no-permission"));
+				sender.sendMessage(tl("no-permission") + ".");
 				return true;
 			}
 

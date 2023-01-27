@@ -15,7 +15,10 @@ public final class Core extends JavaPlugin {
         PLUGIN = this;
         this.saveDefaultConfig();
 
+        this.getServer().getMessenger().registerOutgoingPluginChannel(PLUGIN, "BungeeCord");
+
         // Init commands
+        new LobbyCommand();
         new HelpCommand();
         new FlyCommand();
         new SpeedCommand();
