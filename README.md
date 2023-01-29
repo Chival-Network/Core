@@ -3,7 +3,10 @@
 <!-- BADGES -->
 
 ![Discord](https://img.shields.io/discord/989326489419931668?style=for-the-badge&logo=discord)<br>
-![last commit](https://img.shields.io/github/last-commit/Chival-Network/Core?style=for-the-badge&logo=github)
+<br>
+Last Commit<br>
+![last commit](https://img.shields.io/github/last-commit/Chival-Network/Core?style=for-the-badge&logo=github)<br>
+![last commit](https://img.shields.io/badge/errors-untested%20%28may%20contain%20errors%29-important?style=for-the-badge&logo=github)
 
 <!-- DISCORD -->
 
